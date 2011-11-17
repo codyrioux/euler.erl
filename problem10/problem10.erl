@@ -1,8 +1,16 @@
 -module(problem10).
 -export([start/0]).
+-author("Cody Rioux").
 
 start() ->
-  lists:sum(sieve(lists:seq(2, 1999999))).
+  StartTime = timestamp(),
+  io:format("Solution: ~p ~n", [lists:sum(sieve(lists:seq(2, 1999999)))]),
+  EndTime =  timestamp(),
+  io:format("Time: ~w seconds.~n", [EndTime - StartTime]).
+
+timestamp() ->
+  {_, S, _} = now(),
+  S.
 
 sieve([H|T]) ->
   if H * H > 1999999 ->

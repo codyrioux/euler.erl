@@ -2,7 +2,7 @@
 -export([start/0]).
 
 start() ->
-  find_answer(999).
+  build_palindrome(find_answer(999)).
 
 find_answer(X) when X >= 100 ->
   Answer = is_product_of_two_three_digit_numbers(build_palindrome(X), 999),
@@ -11,7 +11,7 @@ find_answer(X) when X >= 100 ->
     true ->
       find_answer(X - 1)
   end;
-find_answer(_X) -> false.
+find_answer(_X) -> io:format("No Solution Found.~n").
 
 
 build_palindrome(X) ->
